@@ -2,6 +2,7 @@ import '@styles/theme.css'
 import '@styles/globals.css'
 import type {Metadata} from 'next'
 import {Inter, Space_Grotesk} from 'next/font/google'
+import {ClerkProvider} from '@clerk/nextjs'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -28,9 +29,13 @@ export default function RootLayout({
                                    }: {
     children: React.ReactNode
 }) {
+
+    // TODO: Clerk provider making the app to render dynamically. later move the provider to wrap only private routes
     return (
-        <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>{children}</body>
-        </html>
+        <ClerkProvider>
+            <html lang="en">
+            <body className={`${inter.variable} ${spaceGrotesk.variable}`}>{children}</body>
+            </html>
+        </ClerkProvider>
     )
 }

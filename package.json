@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.24.2",
     "@tailwindcss/typography": "github:tailwindcss/typography",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standart": "^0.2.0",
