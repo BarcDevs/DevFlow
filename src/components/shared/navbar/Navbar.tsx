@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {SignedIn, UserButton} from '@clerk/nextjs'
 import Theme from '@components/shared/navbar/Theme'
+import MobileNav from '@components/shared/navbar/MobileNav'
 
 const Navbar = ({}) => {
     return (
@@ -15,7 +16,7 @@ const Navbar = ({}) => {
                     height={23}
                 />
 
-                <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 max-sm:hidden">Dev<span
+                <p className="h2-bold font-spaceGrotesk text-dark-100 dark:text-light-900 max-sm:hidden">Dev<span
                     className="text-primary-500">Flow</span>
                 </p>
             </Link>
@@ -39,7 +40,7 @@ const Navbar = ({}) => {
                     />
                 </SignedIn>
 
-                {/*mobile nav*/}
+                <MobileNav/>
             </div>
         </nav>
     )
