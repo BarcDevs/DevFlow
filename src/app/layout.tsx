@@ -11,7 +11,7 @@ const inter = Inter({
 })
 const spaceGrotesk = Space_Grotesk({
     subsets: ['latin'],
-    variable: '--font-inter',
+    variable: '--font-space-grotesk',
     weight: ['300', '400', '500', '600', '700']
 })
 
@@ -32,7 +32,14 @@ export default function RootLayout({
 
     // TODO: Clerk provider making the app to render dynamically. later move the provider to wrap only private routes
     return (
-        <ClerkProvider>
+        <ClerkProvider
+            appearance={{
+                elements: {
+                    formButtonPrimary: 'primary-gradient',
+                    footerActionLink: 'primary-text-gradient hover:text-primary-500'
+                }
+            }}
+        >
             <html lang="en">
             <body className={`${inter.variable} ${spaceGrotesk.variable}`}>{children}</body>
             </html>
