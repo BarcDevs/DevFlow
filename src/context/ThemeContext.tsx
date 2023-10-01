@@ -22,16 +22,16 @@ const useTheme = () => {
 const ThemeProvider = ({children}: { children: ReactNode }) => {
     const [theme, setTheme] = useState<ThemeType>('system')
 
+    const isDarkMode = () => {
+        if (!('theme' in localStorage))
+            return window.matchMedia('(prefers-color-scheme: dark)').matches
+        return localStorage.theme === 'dark'
+    }
     const handleThemeChange = () => {
-        if (!('theme' in localStorage)) {
-            const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-            setTheme(theme)
-            document.documentElement.classList.remove('dark')
-            document.documentElement.classList.add(theme === 'dark' ? 'dark' : '')
-        } else if (localStorage.theme === 'light') {
-            document.documentElement.classList.remove('dark')
-        } else {
+        if (isDarkMode()) {
             document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
         }
     }
 
