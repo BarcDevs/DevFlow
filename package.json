@@ -11,13 +11,17 @@
   "dependencies": {
     "@clerk/nextjs": "^4.24.2",
     "@tailwindcss/typography": "github:tailwindcss/typography",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standart": "^0.2.0",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
+    "lucide-react": "^0.279.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
