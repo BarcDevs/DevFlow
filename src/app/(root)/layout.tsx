@@ -1,8 +1,10 @@
+import Navbar from '@components/shared/navbar/Navbar'
+
 const Layout = ({childern}: { childern: React.ReactNode }) => {
     return (
         <main className={'background-light850_dark100 relative'}>
-            {/*navbar*/}
-            
+            <Navbar/>
+
             <div className={'flex'}>
                 {/*left sidebar*/}
 
