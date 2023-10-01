@@ -1,10 +1,9 @@
 import {Sheet, SheetClose, SheetContent, SheetTrigger} from "@/components/ui/sheet"
 import Image from 'next/image'
 import Link from 'next/link'
-import {Fragment} from 'react'
-import NavContent from '@components/shared/navbar/NavContent'
 import {SignedOut} from '@clerk/nextjs'
 import {Button} from '@components/ui/button'
+import NavContent from '@components/shared/navbar/NavContent'
 
 
 const MobileNav = ({}) => {
@@ -36,7 +35,7 @@ const MobileNav = ({}) => {
                     </p>
                 </Link>
 
-                <Fragment>
+                <section>
                     <SheetClose asChild>
                         <NavContent/>
                     </SheetClose>
@@ -62,7 +61,7 @@ const MobileNav = ({}) => {
                             </SheetClose>
                         </div>
                     </SignedOut>
-                </Fragment>
+                </section>
             </SheetContent>
         </Sheet>
     )
