@@ -1,14 +1,11 @@
 "use client"
 
 import {createContext, ReactNode, useContext, useEffect, useState} from "react"
-
-type Theme =
-    'light' | 'dark' | ''
-
+import {ThemeType} from '@types'
 
 type ThemeContextType = {
-    theme: Theme,
-    setTheme: (theme: Theme) => void
+    theme: ThemeType,
+    setTheme: (theme: ThemeType) => void
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -23,7 +20,7 @@ const useTheme = () => {
 }
 
 const ThemeProvider = ({children}: { children: ReactNode }) => {
-    const [theme, setTheme] = useState<Theme>('')
+    const [theme, setTheme] = useState<ThemeType>('system')
 
     const handleThemeChange = () => {
         if (theme === 'light') {
