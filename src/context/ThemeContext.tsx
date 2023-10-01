@@ -23,12 +23,15 @@ const ThemeProvider = ({children}: { children: ReactNode }) => {
     const [theme, setTheme] = useState<ThemeType>('system')
 
     const handleThemeChange = () => {
-        if (theme === 'light') {
-            // setTheme('dark')
-            document.documentElement.classList.add('dark')
+        if (!('theme' in localStorage)) {
+            const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            setTheme(theme)
+            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.add(theme === 'dark' ? 'dark' : '')
+        } else if (localStorage.theme === 'light') {
+            document.documentElement.classList.remove('dark')
         } else {
-            // setTheme('light')
-            document.documentElement.classList.add('light')
+            document.documentElement.classList.add('dark')
         }
     }
 
