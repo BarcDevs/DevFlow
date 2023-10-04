@@ -7,7 +7,7 @@ import {themes} from '@constants'
 import {ThemeType} from '@types'
 
 const Theme = ({}) => {
-    const {theme, setTheme} = useTheme()
+    const {theme, setTheme, activeTheme} = useTheme()
 
     const toggleTheme = (theme: ThemeType) => {
         setTheme(theme)
@@ -18,12 +18,6 @@ const Theme = ({}) => {
             localStorage.removeItem('theme')
     }
 
-    const getThemeIcon = () => {
-        if (theme === 'system')
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'moon' : 'sun'
-        else
-            return theme === 'dark' ? 'moon' : 'sun'
-    }
 
     return (
         <Menubar className={'relative border-none bg-transparent shadow-none'}>
@@ -32,8 +26,8 @@ const Theme = ({}) => {
                     className={'focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'}
                 >
                     <Image
-                        src={`/assets/icons/${getThemeIcon()}.svg`}
-                        alt={getThemeIcon()}
+                        src={`/assets/icons/${activeTheme === 'dark' ? 'moon' : 'sun'}.svg`}
+                        alt={activeTheme === 'dark' ? 'moon' : 'sun'}
                         width={20}
                         height={20}
                         className={'active-theme'}
@@ -64,6 +58,7 @@ const Theme = ({}) => {
                 </MenubarContent>
             </MenubarMenu>
         </Menubar>
+
     )
 }
 

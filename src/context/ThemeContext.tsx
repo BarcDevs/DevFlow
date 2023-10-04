@@ -6,6 +6,7 @@ import {ThemeType} from '@types'
 type ThemeContextType = {
     theme: ThemeType,
     setTheme: (theme: ThemeType) => void
+    activeTheme: Omit<ThemeType, 'system'>
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -21,17 +22,20 @@ const useTheme = () => {
 
 const ThemeProvider = ({children}: { children: ReactNode }) => {
     const [theme, setTheme] = useState<ThemeType>('system')
+    const [activeTheme, setActiveTheme] = useState<Omit<ThemeType, 'system'>>(localStorage.theme)
 
     const isDarkMode = () => {
         if (!('theme' in localStorage))
-            return window.matchMedia('(prefers-color-scheme: dark)').matches
+            localStorage.setItem('theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
         return localStorage.theme === 'dark'
     }
     const handleThemeChange = () => {
         if (isDarkMode()) {
             document.documentElement.classList.add('dark')
+            setActiveTheme('dark')
         } else {
             document.documentElement.classList.remove('dark')
+            setActiveTheme('light')
         }
     }
 
@@ -40,7 +44,7 @@ const ThemeProvider = ({children}: { children: ReactNode }) => {
     }, [theme])
 
     return (
-        <ThemeContext.Provider value={{theme, setTheme}}>
+        <ThemeContext.Provider value={{theme, setTheme, activeTheme}}>
             {children}
         </ThemeContext.Provider>
     )
