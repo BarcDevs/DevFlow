@@ -18,6 +18,13 @@ const Theme = ({}) => {
             localStorage.removeItem('theme')
     }
 
+    const getThemeIcon = () => {
+        if (theme === 'system')
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'moon' : 'sun'
+        else
+            return theme === 'dark' ? 'moon' : 'sun'
+    }
+
     return (
         <Menubar className={'relative border-none bg-transparent shadow-none'}>
             <MenubarMenu>
@@ -25,8 +32,8 @@ const Theme = ({}) => {
                     className={'focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'}
                 >
                     <Image
-                        src={`/assets/icons/${theme === 'dark' ? 'moon' : 'sun'}.svg`}
-                        alt={theme === 'dark' ? 'moon' : 'sun Mode'}
+                        src={`/assets/icons/${getThemeIcon()}.svg`}
+                        alt={getThemeIcon()}
                         width={20}
                         height={20}
                         className={'active-theme'}
@@ -57,7 +64,6 @@ const Theme = ({}) => {
                 </MenubarContent>
             </MenubarMenu>
         </Menubar>
-
     )
 }
 
