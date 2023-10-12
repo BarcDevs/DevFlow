@@ -35,13 +35,13 @@ const MobileNav = ({}) => {
                     </p>
                 </Link>
 
-                <section>
+                <nav className={'flex h-full flex-col justify-between'}>
                     <SheetClose asChild>
                         <NavContent/>
                     </SheetClose>
 
                     <SignedOut>
-                        <div className="flex flex-col gap-3">
+                        <section className="flex h-fit flex-col gap-3 pb-6">
                             <SheetClose asChild>
                                 <Link href={'/sign-in'}>
                                     <Button
@@ -59,9 +59,9 @@ const MobileNav = ({}) => {
                                     </Button>
                                 </Link>
                             </SheetClose>
-                        </div>
+                        </section>
                     </SignedOut>
-                </section>
+                </nav>
             </SheetContent>
         </Sheet>
     )
