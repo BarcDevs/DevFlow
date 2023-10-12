@@ -1,10 +1,9 @@
 "use client"
 
 import {sidebarLinks} from '@constants'
-import Link from 'next/link'
 import {SheetClose} from '@components/ui/sheet'
-import Image from 'next/image'
 import {usePathname} from 'next/navigation'
+import NavItem from '@components/shared/navbar/NavItem'
 
 const NavContent = ({}) => {
     const pathname = usePathname()
@@ -16,24 +15,7 @@ const NavContent = ({}) => {
 
                 return (
                     <SheetClose asChild key={item.route}>
-                        <Link
-                            className={`${isActive
-                                ? 'primary-gradient rounded-lg text-light-900'
-                                : 'text-dark300_light900'
-                            } flex items-center justify-start gap-4 bg-transparent p-4`}
-                            href={item.route}
-                        >
-                            <Image
-                                src={item.imgURL}
-                                alt={item.label}
-                                width={20}
-                                height={20}
-                                className={isActive ? '' : 'invert-colors'}
-                            />
-                            <p className={isActive ? 'base-bold' : 'base-medium'}>
-                                {item.label}
-                            </p>
-                        </Link>
+                        <NavItem item={item}/>
                     </SheetClose>
                 )
             })}
