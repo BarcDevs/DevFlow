@@ -1,6 +1,6 @@
 import Navbar from '@components/shared/navbar/Navbar'
-import LeftSidebar from '@components/shared/navbar/LeftSidebar'
-import RightSidebar from '@components/shared/navbar/RightSidebar'
+import LeftSidebar from '@components/shared/LeftSidebar'
+import RightSidebar from '@components/shared/RightSidebar'
 
 const Layout = ({childern}: { childern: React.ReactNode }) => {
     return (
