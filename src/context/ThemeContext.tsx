@@ -1,14 +1,12 @@
 "use client"
 
 import {createContext, ReactNode, useContext, useEffect, useState} from "react"
-
-type Theme =
-    'light' | 'dark' | ''
-
+import {ThemeType} from '@types'
 
 type ThemeContextType = {
-    theme: Theme,
-    setTheme: (theme: Theme) => void
+    theme: ThemeType,
+    setTheme: (theme: ThemeType) => void
+    activeTheme: Omit<ThemeType, 'system'>
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -23,15 +21,21 @@ const useTheme = () => {
 }
 
 const ThemeProvider = ({children}: { children: ReactNode }) => {
-    const [theme, setTheme] = useState<Theme>('')
+    const [theme, setTheme] = useState<ThemeType>('system')
+    const [activeTheme, setActiveTheme] = useState<Omit<ThemeType, 'system'>>(localStorage.theme)
 
+    const isDarkMode = () => {
+        if (!('theme' in localStorage))
+            localStorage.setItem('theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        return localStorage.theme === 'dark'
+    }
     const handleThemeChange = () => {
-        if (theme === 'light') {
-            // setTheme('dark')
+        if (isDarkMode()) {
             document.documentElement.classList.add('dark')
+            setActiveTheme('dark')
         } else {
-            // setTheme('light')
-            document.documentElement.classList.add('light')
+            document.documentElement.classList.remove('dark')
+            setActiveTheme('light')
         }
     }
 
@@ -40,7 +44,7 @@ const ThemeProvider = ({children}: { children: ReactNode }) => {
     }, [theme])
 
     return (
-        <ThemeContext.Provider value={{theme, setTheme}}>
+        <ThemeContext.Provider value={{theme, setTheme, activeTheme}}>
             {children}
         </ThemeContext.Provider>
     )
