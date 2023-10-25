@@ -1,5 +1,6 @@
 import Navbar from '@components/shared/navbar/Navbar'
 import LeftSidebar from '@components/shared/navbar/LeftSidebar'
+import RightSidebar from '@components/shared/navbar/RightSidebar'
 
 const Layout = ({childern}: { childern: React.ReactNode }) => {
     return (
@@ -15,7 +16,7 @@ const Layout = ({childern}: { childern: React.ReactNode }) => {
                     </div>
                 </section>
 
-                {/*right sidebar*/}
+                <RightSidebar/>
             </div>
         </main>
     )
