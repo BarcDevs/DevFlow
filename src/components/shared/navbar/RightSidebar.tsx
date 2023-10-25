@@ -28,10 +28,30 @@ const RightSidebar = ({}) => {
                     ))}
                 </ul>
             </section>
-            <section>
+
+            <section className={'mt-16 flex w-full flex-col justify-between gap-6'}>
                 <h3 className={'text-dark200_light900 text-xl font-bold'}>
                     Popular Tags
                 </h3>
+
+                <ul className={'flex flex-col gap-4'}>
+                    {popularTags.map(tag => (
+                        <Link
+                            href={tag.link}
+                            className={'flex w-full justify-between'}
+                            key={tag.tag}>
+                            <div
+                                className={'background-light800_dark300 flex items-center justify-center rounded-md px-4 py-2 shadow-light-300'}>
+                                <p className={'text-light400_light500 text-base font-medium uppercase'}>
+                                    {tag.tag}
+                                </p>
+                            </div>
+                            <p className={'text-dark500_light700 text-base font-medium'}>
+                                {tag.count}
+                            </p>
+                        </Link>
+                    ))}
+                </ul>
 
             </section>
 

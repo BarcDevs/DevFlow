@@ -7,12 +7,12 @@ export const topQuestions = [
 ]
 
 export const popularTags = [
-    {tag: 'react', count: 20879},
-    {tag: 'typescript', count: 20549},
-    {tag: 'javascript', count: 18265},
-    {tag: 'nodejs', count: 16087},
-    {tag: 'python', count: 14643},
-    {tag: 'html', count: 14089},
-    {tag: 'css', count: 13197},
-    {tag: 'angular', count: 12568}
+    {tag: 'react', count: 20879, link: '/tags'},
+    {tag: 'typescript', count: 20549, link: '/tags'},
+    {tag: 'javascript', count: 18265, link: '/tags'},
+    {tag: 'nodejs', count: 16087, link: '/tags'},
+    {tag: 'python', count: 14643, link: '/tags'},
+    {tag: 'html', count: 14089, link: '/tags'},
+    {tag: 'css', count: 13197, link: '/tags'},
+    {tag: 'angular', count: 12568, link: '/tags'}
 ]
