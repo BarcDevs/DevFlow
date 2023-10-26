@@ -6,7 +6,7 @@ import RenderTag from '@components/shared/RenderTag'
 const RightSidebar = ({}) => {
     return (
         <aside
-            className={'background-light900_dark200 custom-scrollbar sticky right-0 top-0 flex shrink-0 flex-col items-start overflow-auto border-l px-[26px] pb-12 pt-36 shadow-light-300 backdrop-blur-[75px] dark:shadow-none max-lg:hidden xl:h-screen xl:w-[350px]'}>
+            className={'background-light900_dark200 custom-scrollbar sticky right-0 top-0 flex shrink-0 flex-col items-start overflow-auto border-l px-[26px] pb-12 pt-36 shadow-light-300 backdrop-blur-[75px] dark:shadow-none max-xl:hidden xl:h-screen xl:w-[350px]'}>
             <section className={'flex w-full flex-col justify-between gap-6'}>
                 <h3 className={'text-dark200_light900 h3-bold'}>
                     Top Questions
