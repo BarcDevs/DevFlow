@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import {Button} from '@components/ui/button'
+import Searchbar from '@components/shared/search/Searchbar'
 
-const home = ({}) => {
+const Home = ({}) => {
     return (
         <>
             <section className={'flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center'}>
@@ -20,12 +21,12 @@ const home = ({}) => {
             </section>
 
             <section className={'mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center'}>
-                <LocalSearchbar/>
+                <Searchbar type={'local'} placeholder={'Search questions...'}/>
 
-                <Filters/>
+                {/*<Filters/>*/}
             </section>
         </>
     )
 }
 
-export default home
+export default Home
