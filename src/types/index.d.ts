@@ -17,3 +17,8 @@ export type Tag = {
     name: string
     count?: number
 }
+
+export type Filter = {
+    name: string,
+    value: string
+}
