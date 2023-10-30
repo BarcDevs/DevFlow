@@ -6,6 +6,7 @@ import {HomePageFilters} from '@constants/filters'
 import HomeFilter from '@components/shared/home/HomeFilter'
 import {questions} from '@constants/mocks'
 import QuestionCard from '@components/shared/home/cards/QuestionCard'
+import NoResults from '@components/shared/NoResults'
 
 const Home = ({}) => {
     return (
@@ -47,9 +48,17 @@ const Home = ({}) => {
             <HomeFilter/>
 
             <section className={'mt-10 flex w-full flex-col gap-6'}>
-                {questions.map(question => (
-                    <QuestionCard key={question._id} {...question}/>
-                ))}
+                {questions.length > 0 ?
+                    questions.map(question => (
+                        <QuestionCard key={question._id} {...question}/>
+                    )) :
+                    <NoResults
+                        title={'There are no questions to show'}
+                        description={'Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡'}
+                        link={'/ask-question'}
+                        linkTitle={'Ask a Question'}
+                    />
+                }
             </section>
         </>
     )
