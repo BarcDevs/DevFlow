@@ -47,7 +47,7 @@ export const questions: Question[] = [
         _id: '2',
         headline: 'How to set up authentication in a Next.js application?',
         body: 'I want to add authentication to my Next.js application. What are the best practices for setting up authentication in a Next.js application? How can I use a third-party authentication provider like Firebase or Auth0?',
-        createdAt: new Date('2023-01-02'),
+        createdAt: new Date('2023-10-30 15:33:00'),
         views: 5678,
         votes: {
             positive: 98,
@@ -74,7 +74,7 @@ export const questions: Question[] = [
         _id: '3',
         headline: 'How to optimize images in a Next.js application?',
         body: 'I want to optimize the images in my Next.js application. What are the best practices for optimizing images in a Next.js application? How can I use a third-party image optimization service like Cloudinary or Imgix?',
-        createdAt: new Date('2023-01-03'),
+        createdAt: new Date('2023-10-03'),
         views: 4567,
         votes: {
             positive: 78,

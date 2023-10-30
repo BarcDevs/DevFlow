@@ -17,6 +17,7 @@
     "@tailwindcss/typography": "github:tailwindcss/typography",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standart": "^0.2.0",
     "eslint-plugin-standard": "^5.0.0",

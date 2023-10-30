@@ -3,6 +3,7 @@ import {Question} from '@types'
 import RenderTag from '@components/shared/RenderTag'
 import Image from 'next/image'
 import Link from 'next/link'
+import {toRelative} from '@lib/format'
 
 type QuestionCardProps = {
     buttons?: 'edit' | 'star'
@@ -43,7 +44,7 @@ const QuestionCard = ({_id, headline, author, tags, createdAt, votes, answers, v
                         {author.name}
                     </p>
                     <p className={'small-regular'}>
-                        {`• asked ${createdAt.toLocaleDateString()}`}
+                        {`• asked ${toRelative(createdAt)}`}
                     </p>
                 </Link>
 
