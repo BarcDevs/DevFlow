@@ -3,6 +3,7 @@ import {Button} from '@components/ui/button'
 import Searchbar from '@components/shared/search/Searchbar'
 import Filter from '@components/shared/Filter'
 import {HomePageFilters} from '@constants/filters'
+import HomeFilter from '@components/shared/home/HomeFilter'
 
 const Home = ({}) => {
     return (
@@ -41,7 +42,7 @@ const Home = ({}) => {
                 </div>
             </section>
 
-            {/*<HomeFilter/>*/}
+            <HomeFilter/>
         </>
     )
 }
