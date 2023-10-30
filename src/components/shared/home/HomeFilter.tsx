@@ -11,11 +11,15 @@ const HomeFilter = ({}) => {
         inactive: 'text-light400_light500 bg-light-800'
     }
 
+    const handleFilterClick = (filter: string) => {
+        active === filter ? setActive('') : setActive(filter)
+    }
+
     return (
         <div className={'mt-10 flex flex-wrap justify-start gap-3 max-md:hidden'}>
             {HomePageFilters.map(filter => (
                 <Button
-                    onClick={() => setActive(filter.name)}
+                    onClick={() => handleFilterClick(filter.name)}
                     key={filter.value}
                     value={filter.value}
                     className={`${active === filter.name ?
