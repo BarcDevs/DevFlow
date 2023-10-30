@@ -46,9 +46,9 @@ const Home = ({}) => {
 
             <HomeFilter/>
 
-            <section className={'flex flex-col gap-6'}>
+            <section className={'mt-10 flex w-full flex-col gap-6'}>
                 {questions.map(question => (
-                    <QuestionCard key={question._id}/>
+                    <QuestionCard key={question._id} {...question}/>
                 ))}
             </section>
         </>
