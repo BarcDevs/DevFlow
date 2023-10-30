@@ -7,8 +7,8 @@ import {Button} from '@components/ui/button'
 const HomeFilter = ({}) => {
     const [active, setActive] = useState('')
     const buttonStyles = {
-        active: 'bg-primary-100 text-primary-500',
-        inactive: 'text-light400_light500 bg-light-800'
+        active: 'bg-primary-100 dark:bg-dark-400 text-primary-500',
+        inactive: 'text-light400_light500 background-light800_dark300'
     }
 
     const handleFilterClick = (filter: string) => {
