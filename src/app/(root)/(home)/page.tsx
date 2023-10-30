@@ -4,6 +4,8 @@ import Searchbar from '@components/shared/search/Searchbar'
 import Filter from '@components/shared/Filter'
 import {HomePageFilters} from '@constants/filters'
 import HomeFilter from '@components/shared/home/HomeFilter'
+import {questions} from '@constants/mocks'
+import QuestionCard from '@components/shared/home/cards/QuestionCard'
 
 const Home = ({}) => {
     return (
@@ -43,6 +45,12 @@ const Home = ({}) => {
             </section>
 
             <HomeFilter/>
+
+            <section className={'flex flex-col gap-6'}>
+                {questions.map(question => (
+                    <QuestionCard key={question._id}/>
+                ))}
+            </section>
         </>
     )
 }
