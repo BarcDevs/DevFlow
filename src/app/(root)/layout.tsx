@@ -1,4 +1,4 @@
-import Navbar from '@components/shared/navbar/Navbar'
+import Navbar from '@components/navbar/Navbar'
 import LeftSidebar from '@components/shared/LeftSidebar'
 import RightSidebar from '@components/shared/RightSidebar'
 

@@ -1,9 +1,9 @@
-import {Sheet, SheetClose, SheetContent, SheetTrigger} from "@/components/ui/sheet"
+import {Sheet, SheetClose, SheetContent, SheetTrigger} from "@components/ui/sheet"
 import Image from 'next/image'
 import Link from 'next/link'
 import {SignedOut} from '@clerk/nextjs'
 import {Button} from '@components/ui/button'
-import NavContent from '@components/shared/navbar/NavContent'
+import NavContent from '@components/navbar/NavContent'
 
 
 const MobileNav = ({}) => {

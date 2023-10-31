@@ -1,4 +1,4 @@
-import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card"
+import {Card, CardContent, CardFooter, CardHeader} from "@components/ui/card"
 import {Question} from '@types'
 import RenderTag from '@components/shared/RenderTag'
 import Link from 'next/link'

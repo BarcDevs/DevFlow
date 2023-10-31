@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import {Button} from '@components/ui/button'
-import Searchbar from '@components/shared/search/Searchbar'
+import Searchbar from '@components/search/Searchbar'
 import Filter from '@components/shared/Filter'
 import {HomePageFilters} from '@constants/filters'
-import HomeFilter from '@components/shared/home/HomeFilter'
+import HomeFilter from '@components/home/HomeFilter'
 import {questions} from '@constants/mocks'
-import QuestionCard from '@components/shared/home/cards/QuestionCard'
+import QuestionCard from '@components/shared/cards/QuestionCard'
 import NoResults from '@components/shared/NoResults'
 
 const Home = ({}) => {

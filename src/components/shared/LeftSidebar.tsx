@@ -1,7 +1,7 @@
 "use client"
 
 import {sidebarLinks} from '@constants'
-import NavItem from '@components/shared/navbar/NavItem'
+import NavItem from '@components/navbar/NavItem'
 import {SignedIn, SignedOut, useClerk} from '@clerk/nextjs'
 import Link from 'next/link'
 import Image from 'next/image'

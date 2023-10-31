@@ -3,7 +3,7 @@
 import {sidebarLinks} from '@constants'
 import {SheetClose} from '@components/ui/sheet'
 import {usePathname} from 'next/navigation'
-import NavItem from '@components/shared/navbar/NavItem'
+import NavItem from '@components/navbar/NavItem'
 import {SignedIn} from '@clerk/nextjs'
 
 const NavContent = ({}) => {
