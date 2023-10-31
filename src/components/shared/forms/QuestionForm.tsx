@@ -7,6 +7,7 @@ import {QuestionsSchema} from '@lib/validations'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Input} from '@components/ui/input'
 import {Button} from '@components/ui/button'
+import TextEditor from '@components/shared/forms/TextEditor'
 
 type QuestionFormProps = {}
 
@@ -73,7 +74,7 @@ const QuestionForm = ({}: QuestionFormProps) => {
                                 Detailed explanation of your problem <span className={'text-primary-500'}>*</span>
                             </FormLabel>
                             <FormControl>
-                                {/* TODO: add an editor */}
+                                <TextEditor/>
                             </FormControl>
                             <FormDescription className={formStyles.description}>
                                 {descriptions.body}
