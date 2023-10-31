@@ -1,4 +1,4 @@
-import {Tag, TopQuestion} from '@types'
+import {Question, Tag, TopQuestion} from '@types'
 
 export const topQuestions: TopQuestion[] = [
     {title: 'Would it be appropriate to point out an error in another paper during a referee report?', _id: '1'},
@@ -17,4 +17,84 @@ export const popularTags: Tag[] = [
     {name: 'html', count: 14089, _id: 'tag6'},
     {name: 'css', count: 13197, _id: 'tag7'},
     {name: 'angular', count: 12568, _id: 'tag8'}
+]
+
+export const questions: Question[] = [
+    {
+        _id: '1',
+        headline: 'Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?',
+        body: 'I\'m working on a Next.js project and want to implement Server-Side Rendering (SSR) for efficient data fetching. What are the best practices for data fetching in a Next.js application with SSR? How can I ensure that my data is pre-fetched on the server and passed to the client for improved performance and SEO?',
+        createdAt: new Date('2023-01-01'),
+        views: 7576,
+        votes: {
+            positive: 65,
+            negative: 12
+        },
+        tags: [
+            {
+                _id: '1',
+                name: 'NEXT.JS'
+            }
+        ],
+        author: {
+            _id: '91',
+            name: 'John Doe',
+            avatar: 'https://i.pravatar.cc/300'
+        },
+        answers: []
+    },
+    {
+        _id: '2',
+        headline: 'How to set up authentication in a Next.js application?',
+        body: 'I want to add authentication to my Next.js application. What are the best practices for setting up authentication in a Next.js application? How can I use a third-party authentication provider like Firebase or Auth0?',
+        createdAt: new Date('2023-10-30 15:33:00'),
+        views: 5678,
+        votes: {
+            positive: 98,
+            negative: 3
+        },
+        tags: [
+            {
+                _id: '1',
+                name: 'NEXT.JS'
+            },
+            {
+                _id: '2',
+                name: 'AUTHENTICATION'
+            }
+        ],
+        author: {
+            _id: '2',
+            name: 'Jane Smith',
+            avatar: 'https://i.pravatar.cc/300'
+        },
+        answers: []
+    },
+    {
+        _id: '3',
+        headline: 'How to optimize images in a Next.js application?',
+        body: 'I want to optimize the images in my Next.js application. What are the best practices for optimizing images in a Next.js application? How can I use a third-party image optimization service like Cloudinary or Imgix?',
+        createdAt: new Date('2023-10-03'),
+        views: 4567,
+        votes: {
+            positive: 78,
+            negative: 2
+        },
+        tags: [
+            {
+                _id: '1',
+                name: 'NEXT.JS'
+            },
+            {
+                _id: '3',
+                name: 'IMAGE_OPTIMIZATION'
+            }
+        ],
+        author: {
+            _id: '3',
+            name: 'Bob Johnson',
+            avatar: 'https://i.pravatar.cc/300'
+        },
+        answers: []
+    }
 ]

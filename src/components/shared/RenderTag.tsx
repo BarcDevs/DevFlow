@@ -22,9 +22,7 @@ const RenderTag = ({_id, name, count, showCount}: RenderTagProps) => {
                     {count}
                 </p>
             )}
-
         </Link>
-
     )
 }
 
