@@ -5,5 +5,9 @@ export const QuestionsSchema = z.object({
     body: z.string().min(20),
     tags: z.array(
         z.string().min(1).max(15)
-    ).min(1).max(3)
+    ).min(1, {
+        message: 'You need to add at least one tag.'
+    }).max(3, {
+        message: 'You can only add up to 3 tags.'
+    })
 })
