@@ -3,7 +3,7 @@ import Image from 'next/image'
 import {SignedIn, UserButton} from '@clerk/nextjs'
 import Theme from '@components/navbar/Theme'
 import MobileNav from '@components/navbar/MobileNav'
-import GlobalSearch from '@components/search/GlobalSearch'
+import Searchbar from '@components/search/Searchbar'
 
 const Navbar = ({}) => {
     return (
@@ -22,7 +22,7 @@ const Navbar = ({}) => {
                 </p>
             </Link>
 
-            <GlobalSearch/>
+            <Searchbar type={'global'} placeholder={'Search anything globally...'}/>
 
             <div className="flex-between gap-5">
                 <Theme/>
