@@ -1,9 +1,9 @@
 import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card"
 import {Question} from '@types'
 import RenderTag from '@components/shared/RenderTag'
-import Image from 'next/image'
 import Link from 'next/link'
 import {toRelative} from '@lib/format'
+import Metric from '@components/shared/Metric'
 
 type QuestionCardProps = {
     buttons?: 'edit' | 'star'
@@ -11,81 +11,71 @@ type QuestionCardProps = {
 
 const QuestionCard = ({_id, headline, author, tags, createdAt, votes, answers, views, buttons}: QuestionCardProps) => {
     return (
-        <Card className={'card-wrapper text-dark100_light900 w-full rounded-lg border-none p-[36px] sm:px-[44px]'}>
-            <CardHeader className={'mb-3 p-0'}>
+        <Card
+            className={'card-wrapper text-dark100_light900 w-full rounded-[10px] border-none p-9 sm:px-11 sm:pt-[30px]'}>
+            <CardHeader className={'mb-3.5 flex items-start justify-between gap-5 p-0 max-sm:flex-col-reverse'}>
                 <Link
-                    className={'h3-semibold line-clamp-1'}
                     href={`/question/${_id}`}
                 >
-                    {headline}
+                    <h3 className={'sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1'}>
+                        {headline}
+                    </h3>
                 </Link>
+                <span className={'subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden'}>
+                    {toRelative(createdAt)}
+                </span>
                 {buttons && <div>
                     {/* TODO: add buttons*/}
                 </div>}
             </CardHeader>
-            <CardContent className={'mb-6 flex flex-wrap gap-2 p-0'}>
+
+            <CardContent className={'flex flex-wrap gap-2 p-0'}>
                 {tags.map(tag => (
                     <RenderTag {...tag} key={tag._id}/>
                 ))}
             </CardContent>
-            <CardFooter className={'flex w-full flex-row flex-wrap justify-between p-0'}>
+
+            <CardFooter className={'flex-between mt-6 w-full flex-row flex-wrap gap-3 p-0'}>
                 <Link
-                    className={'flex flex-row items-center gap-1'}
+                    className={'flex-center flex-row gap-1'}
                     href={`/profile/${author._id}`}
                 >
-                    <Image
-                        src={author.avatar}
-                        alt={author.name}
-                        width={20}
-                        height={20}
-                        className={'rounded-full'}
+                    <Metric
+                        image={author.avatar}
+                        value={author.name}
+                        title={`• asked ${toRelative(createdAt)}`}
+                        href={`/profile/${author._id}`}
+                        isAuthor
+                        textStyles={'body-medium text-dark400_light800'}
                     />
-                    <p className={'body-medium'}>
-                        {author.name}
-                    </p>
-                    <p className={'small-regular'}>
-                        {`• asked ${toRelative(createdAt)}`}
-                    </p>
                 </Link>
 
-                <div className={'small-regular flex flex-row items-center gap-2.5'}>
-                    <div className={'flex flex-row items-center gap-1'}>
-                        <Image
-                            src={'/assets/icons/like.svg'}
-                            alt={'like'}
-                            width={16}
-                            height={16}
-                        />
-                        <p>
-                            {`${votes.positive} Votes`}
-                        </p>
-                    </div>
-                    <div className={'flex flex-row items-center gap-1'}>
-                        <Image
-                            src={'/assets/icons/message.svg'}
-                            alt={'message'}
-                            width={16}
-                            height={16}
-                        />
-                        <p>
-                            {`${answers.length} Answers`}
-                        </p>
-                    </div>
-                    <div className={'flex flex-row items-center gap-1'}>
-                        <Image
-                            src={'/assets/icons/eye.svg'}
-                            alt={'eye'}
-                            width={16}
-                            height={16}
-                        />
-                        <p>
-                            {`${views} Votes`}
-                        </p>
-                    </div>
+                <div className={'flex flex-row items-center gap-2.5'}>
+                    <Metric
+                        image={'like'}
+                        title={'Votes'}
+                        value={votes.positive}
+                        textStyles={'small-medium text-dark400_light800'}
+                    />
+
+                    <Metric
+                        image={'message'}
+                        title={'Answers'}
+                        value={answers.length}
+                        textStyles={'small-medium text-dark400_light800'}
+                    />
+
+                    <Metric
+                        image={'eye'}
+                        title={'Views'}
+                        value={views}
+                        textStyles={'small-medium text-dark400_light800'}
+                    />
                 </div>
             </CardFooter>
         </Card>
     )
 }
+
 
 export default QuestionCard
