@@ -8,6 +8,9 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import {Input} from '@components/ui/input'
 import {Button} from '@components/ui/button'
 import TextEditor from '@components/shared/forms/TextEditor'
+import {Badge} from '@components/ui/badge'
+import Icon from '@components/shared/Icon'
+import {Fragment} from 'react'
 
 type QuestionFormProps = {}
 
@@ -63,6 +66,12 @@ const QuestionForm = ({}: QuestionFormProps) => {
         }
 
         form.trigger()
+    }
+
+    const handleTagRemove = (e: MouseEvent<HTMLButtonElement>, tag: string, field: ControllerRenderProps<FieldValues, string>) => {
+        e
+        const newTags = field.value.filter(t => t !== tag)
+        form.setValue('tags', newTags)
     }
 
     const onSubmit = (values: z.infer<typeof QuestionsSchema>) => {
@@ -127,11 +136,29 @@ const QuestionForm = ({}: QuestionFormProps) => {
                                 Question Title <span className={'text-primary-500'}>*</span>
                             </FormLabel>
                             <FormControl>
-                                <Input
-                                    className={formStyles.input}
-                                    onKeyDown={(e) => handleInputKeyDown(e, field)}
-                                    placeholder={'Add tags...'}
-                                />
+                                <>
+                                    <Input
+                                        className={formStyles.input}
+                                        onKeyDown={(e) => handleInputKeyDown(e, field)}
+                                        placeholder={'Add tags...'}
+                                    />
+
+                                    {field.value.length > 0 && (
+                                        <div className={'mt-2 flex flex-wrap justify-start gap-2'}>
+                                            {field.value.map((tag) => (
+                                                <Badge key={tag}
+                                                       className={'subtle-medium background-light800_dark300 text-dark400_light500 flex-center gap-2 rounded-md border-none px-4 py-2'}>
+                                                    {tag}
+                                                    <button onClick={(e) => handleTagRemove(e, tag, field)}>
+                                                        <Icon name={'close'} size={12}
+                                                              additionalStyle={'cursor-pointer invert-0 dark:invert'}
+                                                        />
+                                                    </button>
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                    )}
+                                </>
                             </FormControl>
                             <FormDescription className={formStyles.description}>
                                 {descriptions.tags}
