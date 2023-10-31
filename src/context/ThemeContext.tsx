@@ -22,7 +22,7 @@ const useTheme = () => {
 
 const ThemeProvider = ({children}: { children: ReactNode }) => {
     const [theme, setTheme] = useState<ThemeType>('system')
-    const [activeTheme, setActiveTheme] = useState<Omit<ThemeType, 'system'>>(localStorage.theme)
+    const [activeTheme, setActiveTheme] = useState<Omit<ThemeType, 'system'>>('dark')
 
     const isDarkMode = () => {
         if (!('theme' in localStorage))
@@ -38,6 +38,10 @@ const ThemeProvider = ({children}: { children: ReactNode }) => {
             setActiveTheme('light')
         }
     }
+
+    useEffect(() => {
+        setActiveTheme(localStorage.theme)
+    }, [])
 
     useEffect(() => {
         handleThemeChange()
