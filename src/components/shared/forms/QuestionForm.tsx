@@ -2,7 +2,7 @@
 
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@components/ui/form'
 import * as z from "zod"
-import {useForm} from 'react-hook-form'
+import {ControllerRenderProps, FieldValues, useForm} from 'react-hook-form'
 import {QuestionsSchema} from '@lib/validations'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {Input} from '@components/ui/input'
@@ -32,6 +32,38 @@ const QuestionForm = ({}: QuestionFormProps) => {
             tags: []
         }
     })
+
+    const handleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>, field: ControllerRenderProps<FieldValues, string>) => {
+        if (e.key === 'Enter' && field.name === 'tags') {
+            e.preventDefault()
+
+            const tagInput = e.target as HTMLInputElement
+            const tagValue = tagInput.value.trim().toUpperCase()
+
+            if (tagValue === '')
+                return form.setError('tags', {
+                    type: 'required',
+                    message: 'Tag is required.'
+                })
+            if (tagValue.length > 15)
+                return form.setError('tags', {
+                    type: 'required',
+                    message: 'Tag must be less than 15 characters.'
+                })
+            if (field.value.includes(tagValue as never))
+                return form.setError('tags', {
+                    type: 'unique',
+                    message: 'Tag already exists.'
+                })
+
+
+            form.setValue('tags', [...field.value, tagValue])
+            tagInput.value = ''
+            form.clearErrors('tags')
+        }
+
+        form.trigger()
+    }
 
     const onSubmit = (values: z.infer<typeof QuestionsSchema>) => {
         console.log(values)
@@ -97,7 +129,7 @@ const QuestionForm = ({}: QuestionFormProps) => {
                             <FormControl>
                                 <Input
                                     className={formStyles.input}
-                                    {...field}
+                                    onKeyDown={(e) => handleInputKeyDown(e, field)}
                                     placeholder={'Add tags...'}
                                 />
                             </FormControl>
