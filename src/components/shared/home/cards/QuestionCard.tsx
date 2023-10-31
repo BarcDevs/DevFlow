@@ -2,7 +2,7 @@ import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card"
 import {Question} from '@types'
 import RenderTag from '@components/shared/RenderTag'
 import Link from 'next/link'
-import {toRelative} from '@lib/utils'
+import {toRelative, toShortNumber} from '@lib/utils'
 import Metric from '@components/shared/Metric'
 
 type QuestionCardProps = {
@@ -54,21 +54,21 @@ const QuestionCard = ({_id, headline, author, tags, createdAt, votes, answers, v
                     <Metric
                         image={'like'}
                         title={'Votes'}
-                        value={votes.positive}
+                        value={toShortNumber(votes.positive)}
                         textStyles={'small-medium text-dark400_light800'}
                     />
 
                     <Metric
                         image={'message'}
                         title={'Answers'}
-                        value={answers.length}
+                        value={toShortNumber(answers.length)}
                         textStyles={'small-medium text-dark400_light800'}
                     />
 
                     <Metric
                         image={'eye'}
                         title={'Views'}
-                        value={views}
+                        value={toShortNumber(views)}
                         textStyles={'small-medium text-dark400_light800'}
                     />
                 </div>

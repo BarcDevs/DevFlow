@@ -5,7 +5,6 @@ type MetricProps = {
     image: string
     value: string | number
     title: string
-    href?: string
     isAuthor?: boolean
     textStyles: string
 }
