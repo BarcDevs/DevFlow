@@ -6,9 +6,12 @@ import {useRef} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {useTheme} from '@context/ThemeContext'
 
-type EditorProps = {}
+type EditorProps = {
+    onBlur: () => void,
+    onChange: (content: string) => void
+}
 
-const TextEditor = ({}: EditorProps) => {
+const TextEditor = ({onBlur, onChange}: EditorProps) => {
     const {activeTheme} = useTheme()
     const editorRef = useRef<any>(null)
 
@@ -17,6 +20,8 @@ const TextEditor = ({}: EditorProps) => {
             apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
             onInit={(evt, editor) => editorRef.current = editor}
             initialValue=""
+            onBlur={onBlur}
+            onEditorChange={content => onChange(content)}
             init={{
                 height: 350,
                 menubar: false,

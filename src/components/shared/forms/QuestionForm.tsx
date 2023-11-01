@@ -124,7 +124,7 @@ const QuestionForm = ({type}: QuestionFormProps) => {
                                 Detailed explanation of your problem <span className={'text-primary-500'}>*</span>
                             </FormLabel>
                             <FormControl>
-                                <TextEditor/>
+                                <TextEditor onBlur={field.onBlur} onChange={field.onChange}/>
                             </FormControl>
                             <FormDescription className={formStyles.description}>
                                 {descriptions.body}
