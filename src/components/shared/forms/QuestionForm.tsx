@@ -1,7 +1,8 @@
 "use client"
 
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@components/ui/form'
 import * as z from "zod"
+import {useState} from 'react'
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from '@components/ui/form'
 import {ControllerRenderProps, FieldValues, useForm} from 'react-hook-form'
 import {QuestionsSchema} from '@lib/validations'
 import {zodResolver} from '@hookform/resolvers/zod'
@@ -10,11 +11,19 @@ import {Button} from '@components/ui/button'
 import TextEditor from '@components/shared/forms/TextEditor'
 import {Badge} from '@components/ui/badge'
 import Icon from '@components/shared/Icon'
-import {Fragment} from 'react'
 
-type QuestionFormProps = {}
+type QuestionFormProps = {
+    type: 'edit' | 'create'
+}
 
-const QuestionForm = ({}: QuestionFormProps) => {
+type FormValues = {
+    title: string
+    body: string
+    tags: string[]
+} & FieldValues
+
+const QuestionForm = ({type}: QuestionFormProps) => {
+    const [submitting, setSubmitting] = useState(false)
     const formStyles = {
         label: 'paragraph-semibold text-dark400_light800',
         input: 'no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border',
@@ -174,7 +183,16 @@ const QuestionForm = ({}: QuestionFormProps) => {
                     )}
                 />
                 {/*endregion */}
-                <Button type="submit">Submit</Button>
+
+                <Button type="submit">
+                    {
+                        submitting ? (
+                            type === 'create' ? 'Posting...' : 'Updating...'
+                        ) : (
+                            type === 'create' ? 'Ask a Question' : 'Update Question'
+                        )
+                    }
+                </Button>
             </form>
         </Form>
     )
