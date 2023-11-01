@@ -184,7 +184,8 @@ const QuestionForm = ({type}: QuestionFormProps) => {
                 />
                 {/*endregion */}
 
-                <Button type="submit">
+                <Button type="submit"
+                        className={'primary-gradient small-medium inline-flex items-center justify-center self-end rounded-md text-light-900'}>
                     {
                         submitting ? (
                             type === 'create' ? 'Posting...' : 'Updating...'
