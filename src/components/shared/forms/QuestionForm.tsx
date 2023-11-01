@@ -36,7 +36,7 @@ const QuestionForm = ({}: QuestionFormProps) => {
         }
     })
 
-    const handleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>, field: ControllerRenderProps<FieldValues, string>) => {
+    const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: ControllerRenderProps<FormValues, string>) => {
         if (e.key === 'Enter' && field.name === 'tags') {
             e.preventDefault()
 
@@ -68,9 +68,9 @@ const QuestionForm = ({}: QuestionFormProps) => {
         form.trigger()
     }
 
-    const handleTagRemove = (e: MouseEvent<HTMLButtonElement>, tag: string, field: ControllerRenderProps<FieldValues, string>) => {
-        e
-        const newTags = field.value.filter(t => t !== tag)
+    const handleTagRemove = (e: React.MouseEvent<HTMLButtonElement>, tag: string, field: ControllerRenderProps<FormValues, string>) => {
+        e.preventDefault()
+        const newTags = field.value.filter((t: string) => t !== tag)
         form.setValue('tags', newTags)
     }
 
@@ -139,7 +139,10 @@ const QuestionForm = ({}: QuestionFormProps) => {
                                 <>
                                     <Input
                                         className={formStyles.input}
-                                        onKeyDown={(e) => handleInputKeyDown(e, field)}
+                                        onKeyDown={(e) => {
+                                            // @ts-ignore
+                                            handleInputKeyDown(e, field)
+                                        }}
                                         placeholder={'Add tags...'}
                                     />
 
@@ -149,7 +152,10 @@ const QuestionForm = ({}: QuestionFormProps) => {
                                                 <Badge key={tag}
                                                        className={'subtle-medium background-light800_dark300 text-dark400_light500 flex-center gap-2 rounded-md border-none px-4 py-2'}>
                                                     {tag}
-                                                    <button onClick={(e) => handleTagRemove(e, tag, field)}>
+                                                    <button onClick={(e) => {
+                                                        // @ts-ignore
+                                                        handleTagRemove(e, tag, field)
+                                                    }}>
                                                         <Icon name={'close'} size={12}
                                                               additionalStyle={'cursor-pointer invert-0 dark:invert'}
                                                         />
