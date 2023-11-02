@@ -22,7 +22,7 @@ export const popularTags: Tag[] = [
 export const questions: Question[] = [
     {
         _id: '1',
-        headline: 'Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?',
+        title: 'Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?',
         body: 'I\'m working on a Next.js project and want to implement Server-Side Rendering (SSR) for efficient data fetching. What are the best practices for data fetching in a Next.js application with SSR? How can I ensure that my data is pre-fetched on the server and passed to the client for improved performance and SEO?',
         createdAt: new Date('2023-01-01'),
         views: 7576,
@@ -45,7 +45,7 @@ export const questions: Question[] = [
     },
     {
         _id: '2',
-        headline: 'How to set up authentication in a Next.js application?',
+        title: 'How to set up authentication in a Next.js application?',
         body: 'I want to add authentication to my Next.js application. What are the best practices for setting up authentication in a Next.js application? How can I use a third-party authentication provider like Firebase or Auth0?',
         createdAt: new Date('2023-10-30 15:33:00'),
         views: 5678,
@@ -72,7 +72,7 @@ export const questions: Question[] = [
     },
     {
         _id: '3',
-        headline: 'How to optimize images in a Next.js application?',
+        title: 'How to optimize images in a Next.js application?',
         body: 'I want to optimize the images in my Next.js application. What are the best practices for optimizing images in a Next.js application? How can I use a third-party image optimization service like Cloudinary or Imgix?',
         createdAt: new Date('2023-10-03'),
         views: 4567,

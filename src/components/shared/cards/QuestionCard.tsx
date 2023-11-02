@@ -9,7 +9,7 @@ type QuestionCardProps = {
     buttons?: 'edit' | 'star'
 } & Question
 
-const QuestionCard = ({_id, headline, author, tags, createdAt, votes, answers, views, buttons}: QuestionCardProps) => {
+const QuestionCard = ({_id, title, author, tags, createdAt, votes, answers, views, buttons}: QuestionCardProps) => {
     return (
         <Card
             className={'card-wrapper text-dark100_light900 w-full rounded-[10px] border-none p-9 sm:px-11 sm:pt-[30px]'}>
@@ -18,7 +18,7 @@ const QuestionCard = ({_id, headline, author, tags, createdAt, votes, answers, v
                     href={`/question/${_id}`}
                 >
                     <h3 className={'sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1'}>
-                        {headline}
+                        {title}
                     </h3>
                 </Link>
                 <span className={'subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden'}>
@@ -44,7 +44,6 @@ const QuestionCard = ({_id, headline, author, tags, createdAt, votes, answers, v
                         image={author.avatar}
                         value={author.name}
                         title={`• asked ${toRelative(createdAt)}`}
-                        href={`/profile/${author._id}`}
                         isAuthor
                         textStyles={'body-medium text-dark400_light800'}
                     />

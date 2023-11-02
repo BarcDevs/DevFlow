@@ -35,7 +35,7 @@ export type Post = {
 }
 
 export type Question = {
-    headline: string
+    title: string
     answers: Post[]
     views: number
     tags: Tag[]
