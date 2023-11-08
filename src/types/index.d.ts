@@ -28,8 +28,8 @@ export type Post = {
     body: string
     createdAt: Date
     votes: {
-        positive: number
-        negative: number
+        positive: User[]
+        negative: User[]
     }
     author: User
 }

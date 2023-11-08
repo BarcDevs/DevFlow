@@ -4,11 +4,13 @@ import Searchbar from '@components/search/Searchbar'
 import Filter from '@components/shared/Filter'
 import {HomePageFilters} from '@constants/filters'
 import HomeFilter from '@components/home/HomeFilter'
-import {questions} from '@constants/mocks'
-import QuestionCard from '@components/shared/cards/QuestionCard'
 import NoResults from '@components/shared/NoResults'
+import {getQuestions} from '@lib/actions/question.action'
+import QuestionCard from '@components/shared/cards/QuestionCard'
 
-const Home = ({}) => {
+const Home = async ({}) => {
+    const {questions} = await getQuestions({})
+
     return (
         <>
             <header className={'flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center'}>
@@ -50,7 +52,7 @@ const Home = ({}) => {
             <section className={'mt-10 flex w-full flex-col gap-6'}>
                 {questions.length > 0 ?
                     questions.map(question => (
-                        <QuestionCard key={question._id} {...question}/>
+                        <QuestionCard key={question._id} question={question}/>
                     )) :
                     <NoResults
                         title={'There are no questions to show'}

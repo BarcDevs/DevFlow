@@ -7,9 +7,12 @@ import Metric from '@components/shared/Metric'
 
 type QuestionCardProps = {
     buttons?: 'edit' | 'star'
-} & Question
+    question: Question
+}
 
-const QuestionCard = ({_id, title, author, tags, createdAt, votes, answers, views, buttons}: QuestionCardProps) => {
+const QuestionCard = ({question, buttons}: QuestionCardProps) => {
+    const {_id, author, title, tags, votes, views, answers, createdAt} = question
+
     return (
         <Card
             className={'card-wrapper text-dark100_light900 w-full rounded-[10px] border-none p-9 sm:px-11 sm:pt-[30px]'}>
@@ -53,7 +56,7 @@ const QuestionCard = ({_id, title, author, tags, createdAt, votes, answers, view
                     <Metric
                         image={'like'}
                         title={'Votes'}
-                        value={toShortNumber(votes.positive)}
+                        value={toShortNumber(votes.positive.length)}
                         textStyles={'small-medium text-dark400_light800'}
                     />
 
