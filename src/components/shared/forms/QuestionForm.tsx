@@ -11,18 +11,20 @@ import {Button} from '@components/ui/button'
 import TextEditor from '@components/shared/forms/TextEditor'
 import {Badge} from '@components/ui/badge'
 import Icon from '@components/shared/Icon'
+import {FormQuestion} from '@types'
+import {createQuestion} from '@lib/actions/question.action'
+import {usePathname, useRouter} from 'next/navigation'
 
 type QuestionFormProps = {
-    type: 'edit' | 'create'
+    type: 'edit' | 'create',
+    userId: string
 }
 
-type FormValues = {
-    title: string
-    body: string
-    tags: string[]
-} & FieldValues
+type FormValues = FormQuestion & FieldValues
 
-const QuestionForm = ({type}: QuestionFormProps) => {
+const QuestionForm = ({type, userId}: QuestionFormProps) => {
+    const router = useRouter()
+    const pathname = usePathname()
     const [submitting, setSubmitting] = useState(false)
     const formStyles = {
         label: 'paragraph-semibold text-dark400_light800',
@@ -83,8 +85,21 @@ const QuestionForm = ({type}: QuestionFormProps) => {
         form.setValue('tags', newTags)
     }
 
-    const onSubmit = (values: z.infer<typeof QuestionsSchema>) => {
-        console.log(values)
+    const onSubmit = async (values: z.infer<typeof QuestionsSchema>) => {
+        setSubmitting(true)
+
+        try {
+            await createQuestion({
+                question: values,
+                authorID: userId,
+                'path': '/'
+            })
+            router.push('/')
+        } catch (error) {
+            console.error((error as Error).message)
+        } finally {
+            setSubmitting(false)
+        }
     }
 
     return (
