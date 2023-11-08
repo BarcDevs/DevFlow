@@ -36,13 +36,21 @@ export type Post = {
 
 export type Question = {
     title: string
-    answers: Post[]
+    answers: Answer[]
     views: number
     tags: Tag[]
 } & Post
+
+export type Answer = Post
 
 export type User = {
     _id: string
     name: string
     avatar: string
+}
+
+export type FormQuestion = {
+    title: string
+    body: string
+    tags: string[]
 }
