@@ -42,6 +42,7 @@ const questionSchema = new Schema<QuestionDocument>({
     }
 })
 
-const Question = models.Question || model<QuestionDocument>('Questions', questionSchema)
+console.log('model', models.Question)
+const Question = models.Question || model<QuestionDocument>('Question', questionSchema)
 
 export default Question
