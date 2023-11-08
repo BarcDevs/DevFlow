@@ -34,7 +34,7 @@ const QuestionCard = ({question, buttons}: QuestionCardProps) => {
 
             <CardContent className={'flex flex-wrap gap-2 p-0'}>
                 {tags.map(tag => (
-                    <RenderTag {...tag} key={tag._id}/>
+                    <RenderTag key={tag._id} tag={tag}/>
                 ))}
             </CardContent>
 

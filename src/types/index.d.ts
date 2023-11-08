@@ -15,7 +15,10 @@ export type TopQuestion = {
 export type Tag = {
     _id: string
     name: string
-    count?: number
+    description: string
+    questions: Question[]
+    followers: User[]
+    createdAt: Date
 }
 
 export type Filter = {

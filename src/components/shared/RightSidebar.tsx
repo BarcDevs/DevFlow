@@ -38,7 +38,7 @@ const RightSidebar = ({}) => {
 
                 <ul className={'flex flex-col gap-4'}>
                     {popularTags.map(tag => (
-                        <RenderTag {...tag} key={tag._id} showCount/>
+                        <RenderTag key={tag._id} tag={tag} showCount/>
                     ))}
                 </ul>
 
