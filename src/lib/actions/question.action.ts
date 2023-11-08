@@ -2,13 +2,12 @@
 
 import {FormQuestion} from '@types'
 import {connectDB} from '@lib/db'
-import {Schema} from 'mongoose'
 import Question from '@lib/db/question.model'
 import Tag from '@lib/db/tag.model'
 
-export async function createQuestion({question, author, path}: {
+export async function createQuestion({question, authorID, path}: {
     question: FormQuestion
-    author: Schema.Types.ObjectId
+    authorID: string
     path: string
 }) {
     await connectDB()
@@ -19,10 +18,10 @@ export async function createQuestion({question, author, path}: {
         const _question = await Question.create({
             title,
             body,
-            author
+            author: JSON.parse(authorID)
         })
 
-        const _tags = tags.map(async tag => {
+        const _tags = await Promise.all(tags.map(async tag => {
             return (await Tag.findOneAndUpdate({
                     name: {$regex: new RegExp(`^${tag}$`, 'i')}
                 },
@@ -32,7 +31,7 @@ export async function createQuestion({question, author, path}: {
                 },
                 {upsert: true, new: true}
             ))
-        })
+        }))
 
         await Question.findOneAndUpdate(_question._id, {
             $push: {tags: {$each: _tags}}
