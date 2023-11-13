@@ -50,8 +50,22 @@ export type Answer = Post
 
 export type User = {
     _id: string
+    email: string,
     name: string
-    avatar: string
+    username: string
+    avatar: string,
+    bio?: string,
+    location?: string,
+    portfolioWebsite?: string,
+    reputation: number,
+    joinedAt: Date,
+    questions: Question[] | Schema.Types.ObjectId[],
+    answers: Answer[] | Schema.Types.ObjectId[],
+    badges: {
+        gold: number,
+        silver: number,
+        bronze: number
+    }
 }
 
 export type FormQuestion = {
