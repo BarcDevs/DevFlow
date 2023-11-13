@@ -16,6 +16,7 @@ export async function getQuestions({page, pageSize, filter, searchQuery}: GetQue
             questions: (await Question.find({})
                     .populate({path: 'author', model: User})
                     .populate({path: 'tags', model: Tag})
+                    .sort({createdAt: -1})
             )
         }
     } catch (e) {
