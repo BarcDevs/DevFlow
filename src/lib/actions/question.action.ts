@@ -5,6 +5,7 @@ import {CreateQuestionParams, GetQuestionParams} from '@lib/actions/shared.types
 import Question from '@lib/db/question.model'
 import Tag from '@lib/db/tag.model'
 import User from '@lib/db/user.model'
+import {revalidatePath} from 'next/cache'
 
 export async function getQuestions({page, pageSize, filter, searchQuery}: GetQuestionParams): Promise<{
     questions: any[],
@@ -58,6 +59,7 @@ export async function createQuestion({question, authorID, path}: CreateQuestionP
 
         // TODO: Increment author reputation
 
+        revalidatePath(path)
     } catch (error) {
         throw new Error(`Error creating question: ${(error as Error).message}`)
     }

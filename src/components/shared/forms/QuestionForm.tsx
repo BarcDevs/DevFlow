@@ -92,7 +92,7 @@ const QuestionForm = ({type, userId}: QuestionFormProps) => {
             await createQuestion({
                 question: values,
                 authorID: userId,
-                'path': '/'
+                path: pathname
             })
             router.push('/')
         } catch (error) {
@@ -200,7 +200,7 @@ const QuestionForm = ({type, userId}: QuestionFormProps) => {
                 {/*endregion */}
 
                 <Button type="submit"
-                        className={'primary-gradient small-medium inline-flex items-center justify-center self-end rounded-md text-light-900'}>
+                        className={'primary-gradient small-medium text-light-900 inline-flex items-center justify-center self-end rounded-md'}>
                     {
                         submitting ? (
                             type === 'create' ? 'Posting...' : 'Updating...'
