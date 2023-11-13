@@ -1,6 +1,8 @@
 import {Webhook} from 'svix'
 import {headers} from 'next/headers'
 import {WebhookEvent} from '@clerk/nextjs/server'
+import {createUser, deleteUser, updateUser} from '@lib/actions/user.action'
+import {NextResponse} from 'next/server'
 
 export async function POST(req: Request) {
 
@@ -48,11 +50,64 @@ export async function POST(req: Request) {
     }
 
     // Get the ID and type
-    const {id} = evt.data
     const eventType = evt.type
 
-    console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
-    console.log('Webhook body:', body)
+    // Handle user events
+    if (eventType === 'user.created') {
+        const {id, first_name, last_name, email_addresses, username, image_url} = evt.data
 
-    return new Response('', {status: 200})
+        // Create a new user in the database
+        const newUser = await createUser({
+            userData: {
+                clerk_id: id,
+                name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
+                email: email_addresses[0].email_address,
+                username: username!,
+                avatar: image_url
+            }
+        })
+
+        return NextResponse.json({
+            message: 'OK',
+            user: newUser
+        })
+    }
+
+    if (eventType === 'user.updated') {
+        const {id, first_name, last_name, email_addresses, username, image_url} = evt.data
+
+        // Update the user in the database
+        const updatedUser = await updateUser({
+            clerkID: id,
+            updateData: {
+                name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
+                email: email_addresses[0].email_address,
+                username: username!,
+                avatar: image_url
+            },
+            path: `/profile/${id}`
+        })
+
+        return NextResponse.json({
+            message: 'OK',
+            user: updatedUser
+        })
+    }
+
+    if (eventType === 'user.deleted') {
+        const {id} = evt.data
+
+        // Delete the user from the database
+        const deletedUser = await deleteUser({
+            clerkID: id!,
+            path: `/profile/${id}`
+        })
+
+        return NextResponse.json({
+            message: 'OK',
+            user: deletedUser
+        })
+    }
+
+    return new Response('', {status: 201})
 }
