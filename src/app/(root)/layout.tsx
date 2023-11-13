@@ -1,8 +1,11 @@
 import Navbar from '@components/navbar/Navbar'
 import LeftSidebar from '@components/shared/LeftSidebar'
 import RightSidebar from '@components/shared/RightSidebar'
+import {getTags} from '@lib/actions/tag.action'
 
-const Layout = ({children}: { children: React.ReactNode }) => {
+const Layout = async ({children}: { children: React.ReactNode }) => {
+    const {tags} = await getTags({})
+
     return (
         <main className={'background-light850_dark100 relative'}>
             <Navbar/>
@@ -16,7 +19,7 @@ const Layout = ({children}: { children: React.ReactNode }) => {
                     </div>
                 </section>
 
-                <RightSidebar/>
+                <RightSidebar popularTags={tags}/>
             </div>
         </main>
     )

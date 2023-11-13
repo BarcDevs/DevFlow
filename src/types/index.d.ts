@@ -1,3 +1,5 @@
+import {Schema} from 'mongoose'
+
 export type ThemeType =
     'light' | 'dark' | 'system'
 
@@ -16,8 +18,8 @@ export type Tag = {
     _id: string
     name: string
     description: string
-    questions: Question[]
-    followers: User[]
+    questions: Question[] | Schema.Types.ObjectId[]
+    followers: User[] | Schema.Types.ObjectId[]
     createdAt: Date
 }
 
