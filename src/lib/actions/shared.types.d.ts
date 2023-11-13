@@ -14,3 +14,13 @@ export type CreateQuestionParams = {
 }
 
 export type GetTagParams = {}
+
+export type CreateUserParams = {
+    userData: {
+        clerk_id: string
+        email: string,
+        name: string
+        username: string
+        avatar: string,
+    }
+}

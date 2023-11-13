@@ -2,6 +2,7 @@
 
 import {connectDB} from '@lib/db'
 import User, {UserDocument} from '@lib/db/user.model'
+import {CreateUserParams} from '@lib/actions/shared.types'
 
 export async function getUserByClerkId({clerkID}: {
     clerkID: string
@@ -16,5 +17,15 @@ export async function getUserByClerkId({clerkID}: {
         return user
     } catch (error) {
         throw new Error(`Error fetching user: ${(error as Error).message}`)
+    }
+}
+
+export async function createUser({userData}: CreateUserParams): Promise<UserDocument> {
+    try {
+        await connectDB()
+
+        return await User.create(userData)
+    } catch (error) {
+        throw new Error(`Error creating user: ${(error as Error).message}`)
     }
 }
