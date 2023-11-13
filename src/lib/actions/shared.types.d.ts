@@ -35,3 +35,8 @@ export type UpdateUserParams = {
     }
     path: string
 }
+
+export type DeleteUserParams = {
+    clerkID: string
+    path: string
+}
