@@ -12,3 +12,5 @@ export type CreateQuestionParams = {
     authorID: string //Schema.Types.ObjectId | UserDocument
     path: string
 }
+
+export type GetTagParams = {}
