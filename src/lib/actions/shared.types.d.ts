@@ -24,3 +24,14 @@ export type CreateUserParams = {
         avatar: string,
     }
 }
+
+export type UpdateUserParams = {
+    clerkID: string
+    updateData: {
+        email: string,
+        name: string
+        username: string
+        avatar: string,
+    }
+    path: string
+}
