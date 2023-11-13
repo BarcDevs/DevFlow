@@ -20,11 +20,9 @@ export async function getQuestions({page, pageSize, filter, searchQuery}: GetQue
                     .sort({createdAt: -1})
             )
         }
-    } catch (e) {
-        console.log(e)
+    } catch (error) {
+        throw new Error(`Error fetching question: ${(error as Error).message}`)
     }
-
-    return {questions: []}
 }
 
 export async function createQuestion({question, authorID, path}: CreateQuestionParams) {
