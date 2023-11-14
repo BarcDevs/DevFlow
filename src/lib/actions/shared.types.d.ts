@@ -17,7 +17,7 @@ export type GetTagParams = {}
 
 export type CreateUserParams = {
     userData: {
-        clerk_id: string
+        clerkID: string
         email: string,
         name: string
         username: string
