@@ -23,7 +23,6 @@
     "date-fns": "^2.30.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standart": "^0.2.0",
-    "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "lucide-react": "^0.279.0",
     "mongodb": "^6.2.0",
