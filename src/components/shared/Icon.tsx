@@ -1,4 +1,5 @@
 import Image from 'next/image'
+//TODO switch everywhere
 
 type IconProps = {
     name: string

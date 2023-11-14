@@ -35,7 +35,6 @@ const Searchbar = ({type, placeholder, imgSrc, iconRight, additionalStyle}: Sear
                 <Input
                     type={'text'}
                     placeholder={placeholder}
-                    value={''}
                     className={'paragraph-regular no-focus placeholder background-light800_darkgradient border-none shadow-none outline-none'}
                 />
             </div>
